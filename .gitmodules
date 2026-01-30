@@ -1,0 +1,3 @@
+[submodule "modules/Filamet-Progress"]
+	path = modules/Filamet-Progress
+	url = https://github.com/filipsurovtsev/Filamet-Progress.git
