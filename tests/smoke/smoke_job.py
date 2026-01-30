@@ -38,7 +38,7 @@ job4 = store.create_job({
     "payload": {"source_job_id": job3["id"]}
 })
 route_job(job4)
-safe_task_run(job4, store)
+safe_task_run(job4["id"], store)
 
 job5 = store.create_job({
     "type": "CAPTION",
