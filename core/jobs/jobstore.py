@@ -1,4 +1,5 @@
 import uuid
+from core.jobs.status import ensure_status
 
 class JobStore:
     def __init__(self):
@@ -35,6 +36,10 @@ class JobStore:
         job = self.jobs.get(job_id)
         if not job:
             return None
+
+        if "status" in fields:
+            ensure_status(fields["status"])
+
         job.update(fields)
         return job
 

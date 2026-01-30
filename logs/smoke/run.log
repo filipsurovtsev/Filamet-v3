@@ -1,6 +1,1 @@
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_job.py", line 4, in <module>
-    job = route_job(None, {"type": "UTILITY_ECHO", "payload": {"text": "ok"}})
-TypeError: route_job() takes 1 positional argument but 2 were given
+SMOKE_OK {'job_id': '1909c12e-3814-4bf3-b3fe-7444d3c6558b', 'status': 'done'}
