@@ -1,23 +1,30 @@
-from core.pipeline.tasks.utility import UtilityPingTask, UtilityEchoTask
-from core.pipeline.tasks.transcribe_v0 import TranscribeTaskV0
-from core.pipeline.tasks.segment_v0 import SimpleSegmentTaskV0
-from core.pipeline.tasks.caption_v0 import PureCaptionTaskV0
-from core.pipeline.tasks.timing_v0 import TimingTaskV0
-from core.pipeline.tasks.srt_v0 import SrtTaskV0
-from core.pipeline.tasks.ass_v0 import AssTaskV0
+from typing import Type
 
-TASK_REGISTRY = {
-    "UTILITY_PING": UtilityPingTask,
-    "UTILITY_ECHO": UtilityEchoTask,
-    "TRANSCRIBE": TranscribeTaskV0,
-    "SEGMENT": SimpleSegmentTaskV0,
-    "CAPTION": PureCaptionTaskV0,
-    "TIMING": TimingTaskV0,
-    "SRT": SrtTaskV0,
-    "ASS": AssTaskV0,
+from core.pipeline.tasks.utility import PingTask, EchoTask
+from core.pipeline.tasks.transcribe_v0 import TranscribeTask
+from core.pipeline.tasks.segment_v0 import SimpleSegmentTask
+from core.pipeline.tasks.caption_v0 import PureCaptionTask
+from core.pipeline.tasks.timing_v0 import TimingTask
+from core.pipeline.tasks.srt_v0 import SrtTask
+from core.pipeline.tasks.ass_v0 import AssTask
+from core.pipeline.tasks.render_prep_v0 import RenderPrepTask
+from core.pipeline.tasks.base import BaseTask
+
+
+TASK_REGISTRY: dict[str, Type[BaseTask]] = {
+    "UTILITY_PING": PingTask,
+    "UTILITY_ECHO": EchoTask,
+    "TRANSCRIBE": TranscribeTask,
+    "SEGMENT": SimpleSegmentTask,
+    "CAPTION": PureCaptionTask,
+    "TIMING": TimingTask,
+    "SRT": SrtTask,
+    "ASS": AssTask,
+    "RENDER_PREP": RenderPrepTask,
 }
 
-def resolve_task(task_type):
+
+def resolve_task(task_type: str) -> Type[BaseTask]:
     if task_type not in TASK_REGISTRY:
         raise ValueError(f"Unknown task_type: {task_type}")
     return TASK_REGISTRY[task_type]
