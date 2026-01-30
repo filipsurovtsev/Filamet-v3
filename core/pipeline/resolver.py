@@ -28,3 +28,5 @@ def resolve_task(task_type: str) -> Type[BaseTask]:
     if task_type not in TASK_REGISTRY:
         raise ValueError(f"Unknown task_type: {task_type}")
     return TASK_REGISTRY[task_type]
+from core.pipeline.resolver_v4_orchestrator_patch import register as register_orchestrator_v4
+register_orchestrator_v4(TYPE_MAP)
