@@ -1,4 +1,4 @@
-from core.pipeline.router import route_job
+from core.jobs.jobrouter import route_job
 
 class RenderOrchestratorV4:
     def run(self, job_id):
