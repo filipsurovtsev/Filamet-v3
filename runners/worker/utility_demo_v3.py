@@ -3,6 +3,11 @@ from core.utils.log import log
 from core.context.link import build_context
 from core.pipeline.resolver import resolve_pipeline
 from core.pipeline.execution.bridge import worker_bridge_v0
+from core.jobs.jobrouter import route_job
+from core.utils.log import log
+from core.context.link import build_context
+from core.pipeline.resolver import resolve_pipeline
+from core.pipeline.execution.bridge import worker_bridge_v0
 
 def create_and_run(job_id: str, task_type: str, payload: dict):
     data = {"job_id": job_id, "task_type": task_type, "payload": payload}
