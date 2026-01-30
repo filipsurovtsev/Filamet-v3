@@ -1,0 +1,35 @@
+{
+  "Default": {
+    "name": "Default",
+    "font": "Arial",
+    "size": 48,
+    "color": "#FFFFFF",
+    "outline": 2,
+    "shadow": 0,
+    "alignment": "bottom_center",
+    "margin_v": 80,
+    "margin_h": 80
+  },
+  "DefaultLarge": {
+    "name": "DefaultLarge",
+    "font": "Arial",
+    "size": 64,
+    "color": "#FFFFFF",
+    "outline": 3,
+    "shadow": 1,
+    "alignment": "bottom_center",
+    "margin_v": 100,
+    "margin_h": 100
+  },
+  "DefaultMinimal": {
+    "name": "DefaultMinimal",
+    "font": "Arial",
+    "size": 42,
+    "color": "#FFFFFF",
+    "outline": 1,
+    "shadow": 0,
+    "alignment": "bottom_center",
+    "margin_v": 60,
+    "margin_h": 60
+  }
+}
