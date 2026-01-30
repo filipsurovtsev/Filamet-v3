@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_render_orchestrator_v4.py", line 1, in <module>
+    from core.pipeline.orchestrators.render_v4_orchestrator import RenderOrchestratorV4
+  File "/Users/admin/Documents/Filamet-v3/core/pipeline/orchestrators/render_v4_orchestrator.py", line 1, in <module>
+    from core.pipeline.router import route_job
+ModuleNotFoundError: No module named 'core.pipeline.router'
