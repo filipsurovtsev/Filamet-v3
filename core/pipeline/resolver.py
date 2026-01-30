@@ -19,3 +19,5 @@ def resolve_task(task_type: str) -> Type[BaseTask]:
         return TASK_REGISTRY[task_type]
     except KeyError as exc:
         raise ValueError(f"Unknown task type: {task_type}") from exc
+from core.pipeline.tasks.srt_v0 import SrtTask
+TASK_REGISTRY["SRT"] = SrtTask
