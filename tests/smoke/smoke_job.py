@@ -35,7 +35,7 @@ safe_task_run(job3["id"], store)
 
 job4 = store.create_job({
     "type": "SEGMENT",
-    "payload": {"source_job_id": job3.job_id}
+    "payload": {"source_job_id": job3["id"]}
 })
 route_job(job4)
 safe_task_run(job4, store)
