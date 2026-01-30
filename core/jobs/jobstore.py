@@ -3,17 +3,21 @@ class JobStore:
         self.jobs = {}
 
     def create_job(self, job_id, payload):
-        self.jobs[job_id] = {
+        job = {
             "id": job_id,
             "payload": payload,
             "status": "queued",
-            "output": {},
+            "output": {}
         }
-        return self.jobs[job_id]
+        self.jobs[job_id] = job
+        return job
 
-    def update_job(self, job_id, fields):
-        if job_id in self.jobs:
-            self.jobs[job_id].update(fields)
+    def update_job(self, job_id, fields: dict):
+        job = self.jobs.get(job_id)
+        if not job:
+            return None
+        job.update(fields)
+        return job
 
     def load_job(self, job_id):
         return self.jobs.get(job_id)
