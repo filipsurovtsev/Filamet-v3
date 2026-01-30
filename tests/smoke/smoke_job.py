@@ -11,7 +11,7 @@ job = store.create_job({
     "payload": {"message": "ping"}
 })
 route_job(job)
-safe_task_run(job, store)
+safe_task_run(job["id"], store)
 
 job2 = store.create_job({
     "type": "UTILITY_ECHO",
