@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_job.py", line 2, in <module>
+    from core.jobs.jobstore import JobStore
+ImportError: cannot import name 'JobStore' from 'core.jobs.jobstore' (/Users/admin/Documents/Filamet-v3/core/jobs/jobstore.py)
