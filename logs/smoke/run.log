@@ -1,9 +1,1 @@
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_job.py", line 9, in <module>
-    job = store.create_job({
-        "type": "UTILITY_PING",
-        "payload": {"message": "ping"}
-    })
-TypeError: JobStore.create_job() missing 1 required positional argument: 'payload'
+SMOKE_OK {'job_id': 'fa86ad39-a8e5-4ccf-819e-2d61c89fd6c8', 'status': 'failed', 'error': 'Invalid create_job input'}
