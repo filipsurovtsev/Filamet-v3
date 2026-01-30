@@ -2,7 +2,7 @@ class JobStore:
     def __init__(self):
         self.jobs = {}
 
-    def create(self, job_id, payload):
+    def create_job(self, job_id, payload):
         job = {
             "id": job_id,
             "payload": payload,
@@ -12,14 +12,14 @@ class JobStore:
         self.jobs[job_id] = job
         return job
 
-    def update(self, job_id, fields: dict):
+    def update_job(self, job_id, fields: dict):
         job = self.jobs.get(job_id)
         if not job:
             return None
         job.update(fields)
         return job
 
-    def get(self, job_id):
+    def load_job(self, job_id):
         return self.jobs.get(job_id)
 
     def exists(self, job_id):
