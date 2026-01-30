@@ -1,20 +1,22 @@
-JOBSTORE = {}
+class JobStore:
+    def __init__(self):
+        self.jobs = {}
 
-def create_job(job_id, payload):
-    JOBSTORE[job_id] = {
-        "id": job_id,
-        "payload": payload,
-        "status": "PENDING"
-    }
-    return JOBSTORE[job_id]
-
-def get_job(job_id):
-    return JOBSTORE.get(job_id)
-
-def update_status(job_id, status):
-    if job_id in JOBSTORE:
-        JOBSTORE[job_id] = {
-            **JOBSTORE[job_id],
-            "status": status
+    def create(self, job_id, payload):
+        self.jobs[job_id] = {
+            "id": job_id,
+            "payload": payload,
+            "status": "queued",
+            "output": {},
         }
-    return JOBSTORE.get(job_id)
+        return self.jobs[job_id]
+
+    def update_status(self, job_id, status):
+        if job_id in self.jobs:
+            self.jobs[job_id]["status"] = status
+
+    def get(self, job_id):
+        return self.jobs.get(job_id)
+
+    def exists(self, job_id):
+        return job_id in self.jobs
