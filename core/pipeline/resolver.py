@@ -30,3 +30,5 @@ def resolve_task(task_type: str) -> Type[BaseTask]:
     return TASK_REGISTRY[task_type]
 from core.pipeline.resolver_v4_orchestrator_patch import register as register_orchestrator_v4
 register_orchestrator_v4(TYPE_MAP)
+from core.pipeline.resolver_v4_render_entrypoint_patch import register as register_render_entry_v4
+register_render_entry_v4(TYPE_MAP)
