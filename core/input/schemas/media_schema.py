@@ -6,5 +6,5 @@ MEDIA_SCHEMA = {
     "duration": (int, float, type(None)),
     "fps": (int, float, type(None)),
     "codec": (str, type(None)),
-    "meta": (dict, type(None))
+    "meta": (dict, type(None)),
 }

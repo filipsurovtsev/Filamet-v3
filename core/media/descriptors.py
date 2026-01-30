@@ -1,6 +1,6 @@
 class MediaDescriptor:
     def __init__(self, *, media_id=None, path=None, kind=None, source=None,
-                 duration=None, fps=None, codec=None, meta=None):
+                 duration=None, fps=None, codec=None, meta=None, safe=False):
         self.media_id = media_id
         self.path = path
         self.kind = kind
@@ -9,6 +9,7 @@ class MediaDescriptor:
         self.fps = fps
         self.codec = codec
         self.meta = meta or {}
+        self.safe = bool(safe)
 
     def to_dict(self):
         return {
@@ -19,5 +20,6 @@ class MediaDescriptor:
             "duration": self.duration,
             "fps": self.fps,
             "codec": self.codec,
-            "meta": self.meta
+            "meta": self.meta,
+            "safe": self.safe,
         }
