@@ -31,7 +31,7 @@ job3 = store.create_job({
     }
 })
 route_job(job3)
-safe_task_run(job3, store)
+safe_task_run(job3["id"], store)
 
 job4 = store.create_job({
     "type": "SEGMENT",
