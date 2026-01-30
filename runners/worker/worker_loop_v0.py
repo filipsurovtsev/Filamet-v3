@@ -1,4 +1,3 @@
-from core.jobs.jobrouter import route_job
 from core.jobs.jobstore import JobStore
 
 store = JobStore()
@@ -7,7 +6,7 @@ def safe_task_run(job_id, payload):
     try:
         job = store.load_job(job_id)
         if not job:
-            job = store.create_job(job_id, payload)
+            job = store.create_job(job_id, {"type": "UTILITY_ECHO", "payload": payload})
         store.update_job(job_id, {"status": "done"})
         return {"job_id": job_id, "status": "done"}
     except Exception as e:
