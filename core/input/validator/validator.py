@@ -1,5 +1,6 @@
 from core.input.schemas.base import BASE_INPUT_SCHEMA
 from core.input.schemas.task_payload import TASK_PAYLOAD_SCHEMAS
+from core.input.validator.media_validator import validate_media_block
 
 def validate_base(input_data):
     if not isinstance(input_data, dict): return False
@@ -13,9 +14,12 @@ def validate_payload(task_type, payload):
     if not schema: return False
     for r in schema["required"]:
         if r not in payload: return False
-    for key in payload.keys():
-        if key not in schema["required"] and key not in schema["optional"]:
+    for k in payload.keys():
+        if k not in schema["required"] and k not in schema["optional"]:
             return False
+    media_block = payload.get("media")
+    if not validate_media_block(media_block):
+        return False
     return True
 
 def validate_input(data):

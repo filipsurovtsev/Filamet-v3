@@ -1,7 +1,13 @@
+from core.media.factory import build_media_descriptor
+
 class MediaContext:
-    def __init__(self, source=None, meta=None):
-        self.source = source
-        self.meta = meta or {}
-    def get_source(self): return self.source
-    def get_meta(self): return self.meta
-    def set_meta(self, k, v): self.meta[k] = v
+    def __init__(self, descriptor_data=None):
+        self.descriptor = None
+        if descriptor_data:
+            self.descriptor = build_media_descriptor(descriptor_data)
+
+    def set_descriptor(self, data):
+        self.descriptor = build_media_descriptor(data)
+
+    def get_descriptor(self):
+        return self.descriptor
