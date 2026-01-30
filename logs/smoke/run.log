@@ -1,8 +1,6 @@
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_job.py", line 3, in <module>
-    from core.jobs.jobrouter import route_job
-  File "/Users/admin/Documents/Filamet-v3/core/jobs/jobrouter.py", line 1, in <module>
-    from core.jobs.jobstore import create_job
-ImportError: cannot import name 'create_job' from 'core.jobs.jobstore' (/Users/admin/Documents/Filamet-v3/core/jobs/jobstore.py)
+  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_job.py", line 4, in <module>
+    from runners.worker.worker_loop_v0 import safe_task_run
+ModuleNotFoundError: No module named 'runners.worker.worker_loop_v0'
