@@ -18,7 +18,7 @@ job2 = store.create_job({
     "payload": {"message": "echo-test"}
 })
 route_job(job2)
-safe_task_run(job2, store)
+safe_task_run(job2["id"], store)
 
 job3 = store.create_job({
     "type": "TRANSCRIBE",
