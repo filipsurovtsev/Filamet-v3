@@ -1,43 +1,25 @@
-import time
-import json
-import os
-from core.render.engine_v4_stub import RenderEngineV4Stub
-from core.render.hooks_v4.hook_loader_v4 import call_completion_hook_v4
+import os, json, uuid, datetime
+from core.render.engine_v4_stub import render_stub_v4
+from core.render.hooks_v4.completion_hook_v4 import run_completion_hook
 
-def main():
-    worker_id = "render_worker_v4_hooked"
-    print(f"[{worker_id}] started")
+def run_worker_v4_hooked(job):
+    job_id = job.get("job_id") or job.get("id") or str(uuid.uuid4())
 
-    inbox = "queue/render_v4"
-    os.makedirs(inbox, exist_ok=True)
+    outdir = f"output/render/{job_id}"
+    os.makedirs(outdir, exist_ok=True)
 
-    while True:
-        jobs = [f for f in os.listdir(inbox) if f.endswith(".json")]
-        if not jobs:
-            time.sleep(1)
-            continue
+    # 1. Рендерим
+    render_stub_v4(job_id)
 
-        for jfile in jobs:
-            path = os.path.join(inbox, jfile)
-            with open(path, "r") as f:
-                job = json.load(f)
+    # 2. Путь до session.json
+    session_path = f"{outdir}/session.json"
 
-            job_id = job["job_id"]
-            plan = job["plan_path"]
-            overlay = job["overlay_path"]
-            session = job["session_path"]
+    # 3. Выполнить хуки (создаст файл если его нет)
+    session = run_completion_hook(job_id, session_path)
 
-            engine = RenderEngineV4Stub(job_id, plan, overlay, session)
-            engine.load_plan()
-            engine.load_overlay()
-            engine.prepare_session()
-            result = engine.run()
-
-            call_completion_hook_v4(job_id, session)
-
-            os.remove(path)
-
-        time.sleep(0.2)
-
-if __name__ == "__main__":
-    main()
+    return {
+        "job_id": job_id,
+        "session_path": session_path,
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "status": "render_v4_completed_hooked"
+    }
