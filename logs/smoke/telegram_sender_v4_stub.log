@@ -1,0 +1,1 @@
+TELEGRAM_V4_SENDER_STUB_SMOKE_OK {'text_result': {'status': 'ok', 'token': 'TEST_TOKEN', 'chat_id': 'TEST_CHAT', 'text': 'hello v4', 'mode': 'stub'}, 'photo_result': {'status': 'ok', 'mode': 'stub_photo', 'path': '/tmp/test.jpg'}}
