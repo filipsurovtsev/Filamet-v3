@@ -1,0 +1,1 @@
+REAL_TELEGRAM_AUTOPOST_V3_SMOKE {'status': 'failed', 'error': 'missing TG_API_TOKEN_V3 or TG_CHAT_ID_V3'}
