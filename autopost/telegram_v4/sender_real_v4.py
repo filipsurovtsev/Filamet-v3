@@ -1,11 +1,9 @@
-from autopost.telegram_v4.http_client_v4 import TelegramHTTPV4
+from autopost.telegram_v4.http_client_v4 import send_text_v4
 
-class TelegramSenderRealV4:
+class TelegramSenderV4Real:
     def __init__(self, token: str, chat_id: str):
-        self.client = TelegramHTTPV4(token, chat_id)
+        self.token = token
+        self.chat_id = chat_id
 
     def send_text(self, text: str):
-        return self.client.send_text(text)
-
-    def send_photo(self, path: str, caption=None):
-        return self.client.send_photo(path, caption)
+        return send_text_v4(self.token, self.chat_id, text)

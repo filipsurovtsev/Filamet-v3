@@ -1,37 +1,16 @@
 import requests
 
-class TelegramHTTPV4:
-    """
-    Исправленный HTTP-клиент Telegram Bot API.
-    100% корректный формат URL.
-    """
+BASE_URL = "https://api.telegram.org/bot{token}/{method}"
 
-    def __init__(self, token: str, chat_id: str):
-        self.token = token
-        self.chat_id = chat_id
-        self.base = f"https://api.telegram.org/bot{token}/"  # ← критично: / на конце!
+def send_text_v4(token: str, chat_id: str, text: str):
+    url = BASE_URL.format(token=token, method="sendMessage")
+    payload = {
+        "chat_id": chat_id,
+        "text": text
+    }
 
-    def _post(self, method: str, data: dict, files=None):
-        url = f"{self.base}{method}"  # например .../sendMessage
-        try:
-            r = requests.post(url, data=data, files=files, timeout=10)
-            return r.json()
-        except Exception as e:
-            return {"ok": False, "error": str(e)}
-
-    def send_text(self, text: str):
-        return self._post("sendMessage", {
-            "chat_id": self.chat_id,
-            "text": text
-        })
-
-    def send_photo(self, path: str, caption: str = None):
-        try:
-            with open(path, "rb") as f:
-                return self._post(
-                    "sendPhoto",
-                    {"chat_id": self.chat_id, "caption": caption or ""},
-                    files={"photo": f}
-                )
-        except FileNotFoundError:
-            return {"ok": False, "error": "file_not_found"}
+    r = requests.post(url, json=payload, timeout=10)
+    try:
+        return r.json()
+    except:
+        return {"ok": False, "error": "invalid_json", "status_code": r.status_code}
