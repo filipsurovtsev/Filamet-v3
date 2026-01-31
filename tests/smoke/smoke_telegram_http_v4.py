@@ -1,13 +1,13 @@
 from autopost.telegram_v4.sender_real_v4 import TelegramSenderRealV4
 
-TOKEN = "PUT-YOUR-REAL-TOKEN-HERE"
-CHAT  = "PUT-YOUR-CHAT-ID-HERE"
+TOKEN = "PUT-YOUR-TOKEN"
+CHAT = "PUT-YOUR-CHAT-ID"
 
 def run_smoke():
     sender = TelegramSenderRealV4(TOKEN, CHAT)
-
-    r1 = sender.send_text("🔥 Telegram V4 HTTP — SMOKE OK")
-    return {"text": r1}
+    r = sender.send_text("🔥 Telegram FIXED HTTP V4 — SMOKE OK")
+    print(r)
+    return r
 
 if __name__ == "__main__":
     out = run_smoke()

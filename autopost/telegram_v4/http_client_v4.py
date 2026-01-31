@@ -1,19 +1,18 @@
 import requests
-import json
 
 class TelegramHTTPV4:
     """
-    Прямой Telegram Bot API v4 HTTP-клиент.
-    Без асинхронщины, без лишних абстракций.
+    Исправленный HTTP-клиент Telegram Bot API.
+    100% корректный формат URL.
     """
 
     def __init__(self, token: str, chat_id: str):
         self.token = token
         self.chat_id = chat_id
-        self.base = f"https://api.telegram.org/bot{token}"
+        self.base = f"https://api.telegram.org/bot{token}/"  # ← критично: / на конце!
 
     def _post(self, method: str, data: dict, files=None):
-        url = f"{self.base}/{method}"
+        url = f"{self.base}{method}"  # например .../sendMessage
         try:
             r = requests.post(url, data=data, files=files, timeout=10)
             return r.json()
