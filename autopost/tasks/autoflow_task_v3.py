@@ -1,2 +1,5 @@
+from autopost.tasks.autopost_flow_v3 import run_autopost_flow_v3
+
 def run_autoflow_v3():
-    return {"status": "ok", "engine": "autopost_v3_stub"}
+    demo = {"platform": "telegram", "text": "Autopost v3 demo message"}
+    return run_autopost_flow_v3(demo)
