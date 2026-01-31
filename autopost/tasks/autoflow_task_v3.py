@@ -1,5 +1,5 @@
-from autopost.tasks.autopost_flow_v3 import run_autopost_flow_v3
+from autopost.tasks.autopost_telegram_flow_v3 import run_autopost_telegram_flow_v3
 
 def run_autoflow_v3():
-    demo = {"platform": "telegram", "text": "Autopost v3 demo message"}
-    return run_autopost_flow_v3(demo)
+    demo = {"text": "Autopost v3 — real Telegram demo message"}
+    return run_autopost_telegram_flow_v3(demo)
