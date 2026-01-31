@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/admin/Documents/Filamet-v3/tests/telegram_v4/smoke_telegram_v4_post.py", line 1, in <module>
+    from autopost.telegram_v4.sender import TelegramSenderV4
+ModuleNotFoundError: No module named 'autopost.telegram_v4'
