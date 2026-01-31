@@ -1,3 +1,5 @@
+TYPE_MAP = {}
+TYPE_MAP = {}
 from typing import Type
 
 from core.pipeline.tasks.utility import PingTask, EchoTask
@@ -32,3 +34,7 @@ from core.pipeline.resolver_v4_orchestrator_patch import register as register_or
 register_orchestrator_v4(TYPE_MAP)
 from core.pipeline.resolver_v4_render_entrypoint_patch import register as register_render_entry_v4
 register_render_entry_v4(TYPE_MAP)
+from runners.worker_v4.render_worker_v4 import run_worker_v4
+TYPE_MAP["RENDER_V4"] = run_worker_v4
+from runners.worker_v4.render_worker_v4 import run_worker_v4
+TYPE_MAP["RENDER_V4"] = run_worker_v4

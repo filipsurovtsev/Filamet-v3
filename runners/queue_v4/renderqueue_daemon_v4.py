@@ -1,3 +1,4 @@
+from core.jobs.jobrouter import route_job
 import time
 from core.render.queue_v4 import RenderQueueV4
 from core.jobs.jobrouter import route_job
