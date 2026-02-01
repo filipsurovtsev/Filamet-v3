@@ -42,3 +42,5 @@ from core.pipeline.resolver_v4_telegram_patch import register as register_telegr
 register_telegram_post_v4(TYPE_MAP, STORE)
 from core.pipeline.resolver_v4_render_supervisor_patch import register as register_render_supervisor_v4
 register_render_supervisor_v4(TYPE_MAP)
+from core.pipeline.resolver_v4_uploader_patch import register as register_uploader_v4
+register_uploader_v4(TYPE_MAP)
