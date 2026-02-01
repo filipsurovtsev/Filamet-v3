@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/admin/Documents/Filamet-v3/tests/smoke/smoke_router_v4.py", line 1, in <module>
+    from core.pipeline.router import route_job
+  File "/Users/admin/Documents/Filamet-v3/core/pipeline/router.py", line 1, in <module>
+    from core.pipeline.resolver import TYPE_MAP, STORE
+  File "/Users/admin/Documents/Filamet-v3/core/pipeline/resolver.py", line 6, in <module>
+    from core.pipeline.tasks.transcribe_v0 import TranscribeTask
+ModuleNotFoundError: No module named 'core.pipeline.tasks.transcribe_v0'
