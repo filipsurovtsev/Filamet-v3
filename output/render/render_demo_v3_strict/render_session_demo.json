@@ -1,7 +1,0 @@
-{
-  "job_id": "render_demo_v3_strict",
-  "plan_path": "output/render/render_demo_v3_strict/render_plan_demo.json",
-  "overlay_path": "output/render/render_demo_v3_strict/overlay_plan_demo.json",
-  "created_at": "2026-01-30T22:41:16.722722Z",
-  "status": "pending_strict"
-}
