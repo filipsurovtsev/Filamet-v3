@@ -1,42 +1,36 @@
 import os
+from typing import Dict
 
-class SecretsV4:
-    def __init__(self):
-        self._env = {
-            "tg": {
-                "token": os.getenv("TG_API_TOKEN_V4"),
-                "channel": os.getenv("TG_CHANNEL_ID_V4"),
-            },
-            "vk": {
-                "token": os.getenv("VK_API_TOKEN_V4"),
-                "group": os.getenv("VK_GROUP_ID_V4"),
-            },
-            "yt": {
-                "api_key": os.getenv("YT_API_KEY_V4"),
-                "client_id": os.getenv("YT_CLIENT_ID_V4"),
-                "client_secret": os.getenv("YT_CLIENT_SECRET_V4"),
-                "refresh_token": os.getenv("YT_REFRESH_TOKEN_V4"),
-            },
-            "ok": {
-                "api_key": os.getenv("OK_API_KEY_V4"),
-                "access": os.getenv("OK_ACCESS_TOKEN_V4"),
-                "group": os.getenv("OK_GROUP_ID_V4"),
-            },
-            "rutube": {
-                "token": os.getenv("RUTUBE_API_TOKEN_V4"),
-                "channel": os.getenv("RUTUBE_CHANNEL_ID_V4"),
-            },
-            "system": {
-                "env": os.getenv("FILAMET_ENV"),
-                "version": os.getenv("FILAMET_VERSION"),
-            }
-        }
+PATH = "/Users/admin/.filamet_secrets/secrets.env"
+CACHE: Dict[str, str] = {}
 
-    def get(self, service: str, key: str):
-        return self._env.get(service, {}).get(key)
 
-    def get_service(self, service: str):
-        return self._env.get(service, {})
+def _load_file() -> Dict[str, str]:
+    data: Dict[str, str] = {}
+    if not os.path.exists(PATH):
+        return data
+    with open(PATH, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" not in line:
+                continue
+            k, v = line.split("=", 1)
+            data[k.strip()] = v.strip().strip('"').strip("'")
+    return data
 
-    def all(self):
-        return self._env
+
+def load() -> Dict[str, str]:
+    global CACHE
+    if not CACHE:
+        CACHE = _load_file()
+    return CACHE
+
+
+def get(key: str, default: str = "") -> str:
+    env_val = os.getenv(key)
+    if env_val is not None and env_val != "":
+        return env_val
+    data = load()
+    return data.get(key, default)

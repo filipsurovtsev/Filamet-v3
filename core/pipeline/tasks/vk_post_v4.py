@@ -1,11 +1,12 @@
+from core.env.universal_secrets_loader_v4 import get
 import os
 from autopost.vk_v4.sender_v4 import VkSenderV4
 
 class VkPostTaskV4:
     def __init__(self, store):
         self.store = store
-        self.token = os.getenv("VK_API_TOKEN_V4")
-        self.group_id = os.getenv("VK_GROUP_ID_V4")
+        self.token = get("VK_API_TOKEN_V4")
+        self.group_id = get("VK_API_TOKEN_V4")
 
     def run(self, job_id: str, payload: dict):
         if not self.token or not self.group_id:

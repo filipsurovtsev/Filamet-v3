@@ -1,4 +1,21 @@
+# Env & secrets
+*.env
+secrets.env
+*.pickle
+*.json
+!example.env
+
+# Output
+output/
+snapshots/
 tmp_snapshot_v4/
 modules/progress-source/output/
 modules/Filamet-Progress/output/
-snapshots/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Render
+*.mp4
+*.mov

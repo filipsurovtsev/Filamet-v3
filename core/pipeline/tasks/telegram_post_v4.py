@@ -1,3 +1,4 @@
+from core.env.universal_secrets_loader_v4 import get
 from autopost.telegram_v4.sender_real_v4 import TelegramSenderV4Real
 
 def run_telegram_post_v4(payload):

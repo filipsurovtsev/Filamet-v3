@@ -1,3 +1,4 @@
+from core.env.universal_secrets_loader_v4 import get
 from core.pipeline.router import route_job
 
 class RenderSupervisorV4:
