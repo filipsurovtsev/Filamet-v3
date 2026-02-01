@@ -38,3 +38,7 @@ from runners.worker_v4.render_worker_v4 import run_worker_v4
 TYPE_MAP["RENDER_V4"] = run_worker_v4
 from runners.worker_v4.render_worker_v4 import run_worker_v4
 TYPE_MAP["RENDER_V4"] = run_worker_v4
+from core.pipeline.resolver_v4_telegram_patch import register as register_telegram_post_v4
+register_telegram_post_v4(TYPE_MAP, STORE)
+from core.pipeline.resolver_v4_render_supervisor_patch import register as register_render_supervisor_v4
+register_render_supervisor_v4(TYPE_MAP)
